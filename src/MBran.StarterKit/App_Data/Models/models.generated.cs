@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "e10cd02ad5b7ac91")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.7")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "77888a677bfc029a")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -370,7 +370,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Image Edge Left</summary>
 	[PublishedContentModel("imageEdgeLeft")]
-	public partial class ImageEdgeLeft : PublishedContentModel, ITextAndImageContent
+	public partial class ImageEdgeLeft : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "imageEdgeLeft";
@@ -391,6 +391,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageEdgeLeft, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -441,7 +450,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Image Edge Right</summary>
 	[PublishedContentModel("imageEdgeRight")]
-	public partial class ImageEdgeRight : PublishedContentModel, ITextAndImageContent
+	public partial class ImageEdgeRight : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "imageEdgeRight";
@@ -462,6 +471,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageEdgeRight, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -512,7 +530,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Image Block Left</summary>
 	[PublishedContentModel("imageBlockLeft")]
-	public partial class ImageBlockLeft : PublishedContentModel, ITextAndImageContent
+	public partial class ImageBlockLeft : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "imageBlockLeft";
@@ -533,6 +551,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageBlockLeft, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -583,7 +610,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Image Block Right</summary>
 	[PublishedContentModel("imageBlockRight")]
-	public partial class ImageBlockRight : PublishedContentModel, ITextAndImageContent
+	public partial class ImageBlockRight : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "imageBlockRight";
@@ -604,6 +631,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageBlockRight, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -654,7 +690,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Image Inline Left</summary>
 	[PublishedContentModel("imageInlineLeft")]
-	public partial class ImageInlineLeft : PublishedContentModel, ITextAndImageContent
+	public partial class ImageInlineLeft : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "imageInlineLeft";
@@ -675,6 +711,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageInlineLeft, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -725,7 +770,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Image Inline Right</summary>
 	[PublishedContentModel("imageInlineRight")]
-	public partial class ImageInlineRight : PublishedContentModel, ITextAndImageContent
+	public partial class ImageInlineRight : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "imageInlineRight";
@@ -746,6 +791,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageInlineRight, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -902,7 +956,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Html Image Left</summary>
 	[PublishedContentModel("htmlImageLeft")]
-	public partial class HtmlImageLeft : PublishedContentModel, IHtmlAndImageContent
+	public partial class HtmlImageLeft : PublishedContentModel, IHtmlAndImageContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "htmlImageLeft";
@@ -969,11 +1023,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Html Image Right</summary>
 	[PublishedContentModel("htmlImageRight")]
-	public partial class HtmlImageRight : PublishedContentModel, IHtmlAndImageContent
+	public partial class HtmlImageRight : PublishedContentModel, IHtmlAndImageContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "htmlImageRight";
@@ -1040,11 +1103,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Text Over Image Left</summary>
 	[PublishedContentModel("textOverImageLeft")]
-	public partial class TextOverImageLeft : PublishedContentModel, ITextAndImageContent
+	public partial class TextOverImageLeft : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "textOverImageLeft";
@@ -1065,6 +1137,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextOverImageLeft, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1115,7 +1196,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Text Over Image Right</summary>
 	[PublishedContentModel("textOverImageRight")]
-	public partial class TextOverImageRight : PublishedContentModel, ITextAndImageContent
+	public partial class TextOverImageRight : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "textOverImageRight";
@@ -1136,6 +1217,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextOverImageRight, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1262,7 +1352,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Text and Image</summary>
 	[PublishedContentModel("textAndImage")]
-	public partial class TextAndImage : PublishedContentModel, ITextAndImageContent
+	public partial class TextAndImage : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "textAndImage";
@@ -1283,6 +1373,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextAndImage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1333,7 +1432,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Captioned Images - 2 Column Tiles</summary>
 	[PublishedContentModel("captionedImages2ColumnTiles")]
-	public partial class CaptionedImages2ColumnTiles : PublishedContentModel, ICaptionedImagesContent
+	public partial class CaptionedImages2ColumnTiles : PublishedContentModel, ICaptionedImagesContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "captionedImages2ColumnTiles";
@@ -1382,11 +1481,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Captioned Images - Tile Listing</summary>
 	[PublishedContentModel("captionedImagesTileListing")]
-	public partial class CaptionedImagesTileListing : PublishedContentModel, ICaptionedImagesContent
+	public partial class CaptionedImagesTileListing : PublishedContentModel, ICaptionedImagesContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "captionedImagesTileListing";
@@ -1435,11 +1543,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Fullscreen Hero Image</summary>
 	[PublishedContentModel("fullscreenHeroImage")]
-	public partial class FullscreenHeroImage : PublishedContentModel, ITextAndImageContent
+	public partial class FullscreenHeroImage : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenHeroImage";
@@ -1460,6 +1577,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullscreenHeroImage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1601,7 +1727,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Fullscreen Html Image</summary>
 	[PublishedContentModel("fullscreenHtmlImage")]
-	public partial class FullscreenHtmlImage : PublishedContentModel, IHtmlAndImageContent
+	public partial class FullscreenHtmlImage : PublishedContentModel, IHtmlAndImageContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenHtmlImage";
@@ -1668,11 +1794,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Text and Video</summary>
 	[PublishedContentModel("textAndVideo")]
-	public partial class TextAndVideo : PublishedContentModel, ITextAndExternalVideoContent
+	public partial class TextAndVideo : PublishedContentModel, IModuleContent, ITextAndExternalVideoContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "textAndVideo";
@@ -1693,6 +1828,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextAndVideo, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1734,7 +1878,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Video Inline Left</summary>
 	[PublishedContentModel("videoInlineLeft")]
-	public partial class VideoInlineLeft : PublishedContentModel, ITextAndExternalVideoContent
+	public partial class VideoInlineLeft : PublishedContentModel, IModuleContent, ITextAndExternalVideoContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "videoInlineLeft";
@@ -1755,6 +1899,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<VideoInlineLeft, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1796,7 +1949,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Video Inline Right</summary>
 	[PublishedContentModel("videoInlineRight")]
-	public partial class VideoInlineRight : PublishedContentModel, ITextAndExternalVideoContent
+	public partial class VideoInlineRight : PublishedContentModel, IModuleContent, ITextAndExternalVideoContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "videoInlineRight";
@@ -1817,6 +1970,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<VideoInlineRight, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1858,7 +2020,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Fullscreen Embed Video</summary>
 	[PublishedContentModel("fullscreenEmbedVideo")]
-	public partial class FullscreenEmbedVideo : PublishedContentModel, ITextAndExternalVideoContent
+	public partial class FullscreenEmbedVideo : PublishedContentModel, IModuleContent, ITextAndExternalVideoContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenEmbedVideo";
@@ -1879,6 +2041,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullscreenEmbedVideo, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1920,7 +2091,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Fullscreen Modal Video</summary>
 	[PublishedContentModel("fullscreenModalVideo")]
-	public partial class FullscreenModalVideo : PublishedContentModel, ITextAndExternalVideoContent
+	public partial class FullscreenModalVideo : PublishedContentModel, IModuleContent, ITextAndExternalVideoContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenModalVideo";
@@ -1941,6 +2112,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullscreenModalVideo, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -1982,7 +2162,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Fullscreen Block Video</summary>
 	[PublishedContentModel("fullscreenBlockVideo")]
-	public partial class FullscreenBlockVideo : PublishedContentModel, ITextAndExternalVideoContent
+	public partial class FullscreenBlockVideo : PublishedContentModel, IModuleContent, ITextAndExternalVideoContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenBlockVideo";
@@ -2003,6 +2183,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullscreenBlockVideo, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -2044,7 +2233,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Html Contact Form - Left</summary>
 	[PublishedContentModel("htmlContactFormLeft")]
-	public partial class HtmlContactFormLeft : PublishedContentModel, IBasicHtmlContent
+	public partial class HtmlContactFormLeft : PublishedContentModel, IBasicHtmlContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "htmlContactFormLeft";
@@ -2093,11 +2282,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicHtmlContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Html Contact Form - Center</summary>
 	[PublishedContentModel("htmlContactFormCenter")]
-	public partial class HtmlContactFormCenter : PublishedContentModel, IBasicHtmlContent
+	public partial class HtmlContactFormCenter : PublishedContentModel, IBasicHtmlContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "htmlContactFormCenter";
@@ -2146,11 +2344,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicHtmlContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Html Contact Form - Right</summary>
 	[PublishedContentModel("htmlContactFormRight")]
-	public partial class HtmlContactFormRight : PublishedContentModel, IBasicHtmlContent
+	public partial class HtmlContactFormRight : PublishedContentModel, IBasicHtmlContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "htmlContactFormRight";
@@ -2199,11 +2406,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicHtmlContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Fullscreen Subscribe Form</summary>
 	[PublishedContentModel("fullscreenSubscribeForm")]
-	public partial class FullscreenSubscribeForm : PublishedContentModel, ITextAndImageContent
+	public partial class FullscreenSubscribeForm : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenSubscribeForm";
@@ -2224,6 +2440,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullscreenSubscribeForm, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -2274,7 +2499,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Full Width Subscribe Form</summary>
 	[PublishedContentModel("fullWidthSubscribeForm")]
-	public partial class FullWidthSubscribeForm : PublishedContentModel, ITextAndImageContent
+	public partial class FullWidthSubscribeForm : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullWidthSubscribeForm";
@@ -2295,6 +2520,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullWidthSubscribeForm, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -2345,7 +2579,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Fullscreen Coming Soon Form</summary>
 	[PublishedContentModel("fullscreenComingSoonForm")]
-	public partial class FullscreenComingSoonForm : PublishedContentModel, ITextAndImageContent
+	public partial class FullscreenComingSoonForm : PublishedContentModel, IModuleContent, ITextAndImageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullscreenComingSoonForm";
@@ -2366,6 +2600,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullscreenComingSoonForm, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -2690,7 +2933,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Basic Html</summary>
 	[PublishedContentModel("basicHtml")]
-	public partial class BasicHtml : PublishedContentModel, IBasicHtmlContent
+	public partial class BasicHtml : PublishedContentModel, IBasicHtmlContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "basicHtml";
@@ -2739,11 +2982,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicHtmlContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Basic Text</summary>
 	[PublishedContentModel("basicText")]
-	public partial class BasicText : PublishedContentModel, IBasicTextContent
+	public partial class BasicText : PublishedContentModel, IBasicTextContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "basicText";
@@ -2791,6 +3043,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Title
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicTextContent.GetTitle(this); }
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 	}
 
@@ -2978,7 +3239,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Basic Image Text</summary>
 	[PublishedContentModel("basicImageText")]
-	public partial class BasicImageText : PublishedContentModel, IBasicImageTextContent
+	public partial class BasicImageText : PublishedContentModel, IBasicImageTextContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "basicImageText";
@@ -3036,11 +3297,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicImageTextContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
 	/// <summary>Basic Image Html</summary>
 	[PublishedContentModel("basicImageHtml")]
-	public partial class BasicImageHtml : PublishedContentModel, IBasicImageHtmlContent
+	public partial class BasicImageHtml : PublishedContentModel, IBasicImageHtmlContent, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "basicImageHtml";
@@ -3098,18 +3368,38 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return Umbraco.Web.PublishedContentModels.BasicImageHtmlContent.GetTitle(this); }
 		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
 	}
 
-	/// <summary>Tabs</summary>
-	[PublishedContentModel("tabs")]
-	public partial class Tabs : PublishedContentModel
+	// Mixin content Type 1162 with alias "tabsContent"
+	/// <summary>{Tabs Content}</summary>
+	public partial interface ITabsContent : IPublishedContent
+	{
+		/// <summary>Modules</summary>
+		IEnumerable<IPublishedContent> Modules { get; }
+
+		/// <summary>Title</summary>
+		string Title { get; }
+	}
+
+	/// <summary>{Tabs Content}</summary>
+	[PublishedContentModel("tabsContent")]
+	public partial class TabsContent : PublishedContentModel, ITabsContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "tabs";
+		public new const string ModelTypeAlias = "tabsContent";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Tabs(IPublishedContent content)
+		public TabsContent(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -3120,7 +3410,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Tabs, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TabsContent, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -3131,7 +3421,66 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("modules")]
 		public IEnumerable<IPublishedContent> Modules
 		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("modules"); }
+			get { return GetModules(this); }
+		}
+
+		/// <summary>Static getter for Modules</summary>
+		public static IEnumerable<IPublishedContent> GetModules(ITabsContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("modules"); }
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return GetTitle(this); }
+		}
+
+		/// <summary>Static getter for Title</summary>
+		public static string GetTitle(ITabsContent that) { return that.GetPropertyValue<string>("title"); }
+	}
+
+	/// <summary>Button Tabs</summary>
+	[PublishedContentModel("buttonTabs")]
+	public partial class ButtonTabs : PublishedContentModel, IModuleContent, ITabsContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "buttonTabs";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ButtonTabs(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ButtonTabs, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
+
+		///<summary>
+		/// Modules
+		///</summary>
+		[ImplementPropertyType("modules")]
+		public IEnumerable<IPublishedContent> Modules
+		{
+			get { return Umbraco.Web.PublishedContentModels.TabsContent.GetModules(this); }
 		}
 
 		///<summary>
@@ -3140,8 +3489,357 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return this.GetPropertyValue<string>("title"); }
+			get { return Umbraco.Web.PublishedContentModels.TabsContent.GetTitle(this); }
 		}
+	}
+
+	/// <summary>Text Tabs</summary>
+	[PublishedContentModel("textTabs")]
+	public partial class TextTabs : PublishedContentModel, IModuleContent, ITabsContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "textTabs";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TextTabs(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextTabs, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
+
+		///<summary>
+		/// Modules
+		///</summary>
+		[ImplementPropertyType("modules")]
+		public IEnumerable<IPublishedContent> Modules
+		{
+			get { return Umbraco.Web.PublishedContentModels.TabsContent.GetModules(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TabsContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Vertical Button Tabs</summary>
+	[PublishedContentModel("verticalButtonTabs")]
+	public partial class VerticalButtonTabs : PublishedContentModel, IModuleContent, ITabsContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "verticalButtonTabs";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public VerticalButtonTabs(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<VerticalButtonTabs, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
+
+		///<summary>
+		/// Modules
+		///</summary>
+		[ImplementPropertyType("modules")]
+		public IEnumerable<IPublishedContent> Modules
+		{
+			get { return Umbraco.Web.PublishedContentModels.TabsContent.GetModules(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TabsContent.GetTitle(this); }
+		}
+	}
+
+	// Mixin content Type 1172 with alias "testimonialItemContent"
+	/// <summary>{Testimonial Item Content}</summary>
+	public partial interface ITestimonialItemContent : IPublishedContent
+	{
+		/// <summary>Content</summary>
+		string Content { get; }
+
+		/// <summary>Display Name</summary>
+		string DisplayName { get; }
+
+		/// <summary>Image</summary>
+		IPublishedContent Image { get; }
+
+		/// <summary>Job Title</summary>
+		string JobTitle { get; }
+	}
+
+	/// <summary>{Testimonial Item Content}</summary>
+	[PublishedContentModel("testimonialItemContent")]
+	public partial class TestimonialItemContent : PublishedContentModel, ITestimonialItemContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "testimonialItemContent";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TestimonialItemContent(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TestimonialItemContent, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return GetContent(this); }
+		}
+
+		/// <summary>Static getter for Content</summary>
+		public static string GetContent(ITestimonialItemContent that) { return that.GetPropertyValue<string>("content"); }
+
+		///<summary>
+		/// Display Name
+		///</summary>
+		[ImplementPropertyType("displayName")]
+		public string DisplayName
+		{
+			get { return GetDisplayName(this); }
+		}
+
+		/// <summary>Static getter for Display Name</summary>
+		public static string GetDisplayName(ITestimonialItemContent that) { return that.GetPropertyValue<string>("displayName"); }
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return GetImage(this); }
+		}
+
+		/// <summary>Static getter for Image</summary>
+		public static IPublishedContent GetImage(ITestimonialItemContent that) { return that.GetPropertyValue<IPublishedContent>("image"); }
+
+		///<summary>
+		/// Job Title
+		///</summary>
+		[ImplementPropertyType("jobTitle")]
+		public string JobTitle
+		{
+			get { return GetJobTitle(this); }
+		}
+
+		/// <summary>Static getter for Job Title</summary>
+		public static string GetJobTitle(ITestimonialItemContent that) { return that.GetPropertyValue<string>("jobTitle"); }
+	}
+
+	/// <summary>Testimonial Item</summary>
+	[PublishedContentModel("testimonialItem")]
+	public partial class TestimonialItem : PublishedContentModel, IModuleContent, ITestimonialItemContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "testimonialItem";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TestimonialItem(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TestimonialItem, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Display Name
+		///</summary>
+		[ImplementPropertyType("displayName")]
+		public string DisplayName
+		{
+			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetDisplayName(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Job Title
+		///</summary>
+		[ImplementPropertyType("jobTitle")]
+		public string JobTitle
+		{
+			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetJobTitle(this); }
+		}
+	}
+
+	/// <summary>Full Width Testimonial Slider</summary>
+	[PublishedContentModel("fullWidthTestimonialSlider")]
+	public partial class FullWidthTestimonialSlider : PublishedContentModel, IModuleContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "fullWidthTestimonialSlider";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public FullWidthTestimonialSlider(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullWidthTestimonialSlider, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+		}
+	}
+
+	// Mixin content Type 1176 with alias "moduleContent"
+	/// <summary>{Module Content}</summary>
+	public partial interface IModuleContent : IPublishedContent
+	{
+		/// <summary>Enable?</summary>
+		bool Enable { get; }
+	}
+
+	/// <summary>{Module Content}</summary>
+	[PublishedContentModel("moduleContent")]
+	public partial class ModuleContent : PublishedContentModel, IModuleContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "moduleContent";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ModuleContent(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ModuleContent, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return GetEnable(this); }
+		}
+
+		/// <summary>Static getter for Enable?</summary>
+		public static bool GetEnable(IModuleContent that) { return that.GetPropertyValue<bool>("enable"); }
 	}
 
 	/// <summary>Folder</summary>
