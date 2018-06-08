@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "838167bbcfe92f60")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b45d5b8cfa382597")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -52,7 +52,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel
+	public partial class Home : PublishedContentModel, IPageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -73,6 +73,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Home, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content Modules
+		///</summary>
+		[ImplementPropertyType("contentModules")]
+		public IEnumerable<IPublishedContent> ContentModules
+		{
+			get { return Umbraco.Web.PublishedContentModels.PageContent.GetContentModules(this); }
 		}
 	}
 
@@ -104,7 +113,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Generic Page</summary>
 	[PublishedContentModel("genericPage")]
-	public partial class GenericPage : PublishedContentModel
+	public partial class GenericPage : PublishedContentModel, IPageContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "genericPage";
@@ -125,6 +134,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<GenericPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content Modules
+		///</summary>
+		[ImplementPropertyType("contentModules")]
+		public IEnumerable<IPublishedContent> ContentModules
+		{
+			get { return Umbraco.Web.PublishedContentModels.PageContent.GetContentModules(this); }
 		}
 	}
 
@@ -152,6 +170,1194 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+	}
+
+	// Mixin content Type 1099 with alias "textAndImageContent"
+	/// <summary>{Text and Image Content}</summary>
+	public partial interface ITextAndImageContent : IPublishedContent
+	{
+		/// <summary>Content</summary>
+		string Content { get; }
+
+		/// <summary>Image</summary>
+		IPublishedContent Image { get; }
+
+		/// <summary>Link</summary>
+		RJP.MultiUrlPicker.Models.Link Link { get; }
+
+		/// <summary>Summary</summary>
+		string Summary { get; }
+
+		/// <summary>Title</summary>
+		string Title { get; }
+	}
+
+	/// <summary>{Text and Image Content}</summary>
+	[PublishedContentModel("textAndImageContent")]
+	public partial class TextAndImageContent : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "textAndImageContent";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TextAndImageContent(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextAndImageContent, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return GetContent(this); }
+		}
+
+		/// <summary>Static getter for Content</summary>
+		public static string GetContent(ITextAndImageContent that) { return that.GetPropertyValue<string>("content"); }
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return GetImage(this); }
+		}
+
+		/// <summary>Static getter for Image</summary>
+		public static IPublishedContent GetImage(ITextAndImageContent that) { return that.GetPropertyValue<IPublishedContent>("image"); }
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return GetLink(this); }
+		}
+
+		/// <summary>Static getter for Link</summary>
+		public static RJP.MultiUrlPicker.Models.Link GetLink(ITextAndImageContent that) { return that.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("link"); }
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return GetSummary(this); }
+		}
+
+		/// <summary>Static getter for Summary</summary>
+		public static string GetSummary(ITextAndImageContent that) { return that.GetPropertyValue<string>("summary"); }
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return GetTitle(this); }
+		}
+
+		/// <summary>Static getter for Title</summary>
+		public static string GetTitle(ITextAndImageContent that) { return that.GetPropertyValue<string>("title"); }
+	}
+
+	/// <summary>Image Edge Left</summary>
+	[PublishedContentModel("imageEdgeLeft")]
+	public partial class ImageEdgeLeft : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "imageEdgeLeft";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ImageEdgeLeft(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageEdgeLeft, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Image Edge Right</summary>
+	[PublishedContentModel("imageEdgeRight")]
+	public partial class ImageEdgeRight : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "imageEdgeRight";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ImageEdgeRight(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageEdgeRight, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Image Block Left</summary>
+	[PublishedContentModel("imageBlockLeft")]
+	public partial class ImageBlockLeft : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "imageBlockLeft";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ImageBlockLeft(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageBlockLeft, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Image Block Right</summary>
+	[PublishedContentModel("imageBlockRight")]
+	public partial class ImageBlockRight : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "imageBlockRight";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ImageBlockRight(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageBlockRight, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Image Inline Left</summary>
+	[PublishedContentModel("imageInlineLeft")]
+	public partial class ImageInlineLeft : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "imageInlineLeft";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ImageInlineLeft(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageInlineLeft, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Image Inline Right</summary>
+	[PublishedContentModel("imageInlineRight")]
+	public partial class ImageInlineRight : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "imageInlineRight";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ImageInlineRight(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageInlineRight, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	// Mixin content Type 1106 with alias "htmlAndImageContent"
+	/// <summary>{Html and Image Content}</summary>
+	public partial interface IHtmlAndImageContent : IPublishedContent
+	{
+		/// <summary>Content</summary>
+		IHtmlString Content { get; }
+
+		/// <summary>Image</summary>
+		IPublishedContent Image { get; }
+
+		/// <summary>Link</summary>
+		RJP.MultiUrlPicker.Models.Link Link { get; }
+
+		/// <summary>Title</summary>
+		string Title { get; }
+	}
+
+	/// <summary>{Html and Image Content}</summary>
+	[PublishedContentModel("htmlAndImageContent")]
+	public partial class HtmlAndImageContent : PublishedContentModel, IHtmlAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "htmlAndImageContent";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public HtmlAndImageContent(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HtmlAndImageContent, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public IHtmlString Content
+		{
+			get { return GetContent(this); }
+		}
+
+		/// <summary>Static getter for Content</summary>
+		public static IHtmlString GetContent(IHtmlAndImageContent that) { return that.GetPropertyValue<IHtmlString>("content"); }
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return GetImage(this); }
+		}
+
+		/// <summary>Static getter for Image</summary>
+		public static IPublishedContent GetImage(IHtmlAndImageContent that) { return that.GetPropertyValue<IPublishedContent>("image"); }
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return GetLink(this); }
+		}
+
+		/// <summary>Static getter for Link</summary>
+		public static RJP.MultiUrlPicker.Models.Link GetLink(IHtmlAndImageContent that) { return that.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("link"); }
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return GetTitle(this); }
+		}
+
+		/// <summary>Static getter for Title</summary>
+		public static string GetTitle(IHtmlAndImageContent that) { return that.GetPropertyValue<string>("title"); }
+	}
+
+	/// <summary>Html Image Left</summary>
+	[PublishedContentModel("htmlImageLeft")]
+	public partial class HtmlImageLeft : PublishedContentModel, IHtmlAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "htmlImageLeft";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public HtmlImageLeft(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HtmlImageLeft, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public IHtmlString Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Html Image Right</summary>
+	[PublishedContentModel("htmlImageRight")]
+	public partial class HtmlImageRight : PublishedContentModel, IHtmlAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "htmlImageRight";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public HtmlImageRight(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HtmlImageRight, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public IHtmlString Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Text Over Image Left</summary>
+	[PublishedContentModel("textOverImageLeft")]
+	public partial class TextOverImageLeft : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "textOverImageLeft";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TextOverImageLeft(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextOverImageLeft, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Text Over Image Right</summary>
+	[PublishedContentModel("textOverImageRight")]
+	public partial class TextOverImageRight : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "textOverImageRight";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TextOverImageRight(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextOverImageRight, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	// Mixin content Type 1111 with alias "captionedImagesContent"
+	/// <summary>{Captioned Images Content}</summary>
+	public partial interface ICaptionedImagesContent : IPublishedContent
+	{
+		/// <summary>Content</summary>
+		string Content { get; }
+
+		/// <summary>Images</summary>
+		IEnumerable<IPublishedContent> Images { get; }
+
+		/// <summary>Title</summary>
+		string Title { get; }
+	}
+
+	/// <summary>{Captioned Images Content}</summary>
+	[PublishedContentModel("captionedImagesContent")]
+	public partial class CaptionedImagesContent : PublishedContentModel, ICaptionedImagesContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "captionedImagesContent";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public CaptionedImagesContent(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CaptionedImagesContent, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return GetContent(this); }
+		}
+
+		/// <summary>Static getter for Content</summary>
+		public static string GetContent(ICaptionedImagesContent that) { return that.GetPropertyValue<string>("content"); }
+
+		///<summary>
+		/// Images
+		///</summary>
+		[ImplementPropertyType("images")]
+		public IEnumerable<IPublishedContent> Images
+		{
+			get { return GetImages(this); }
+		}
+
+		/// <summary>Static getter for Images</summary>
+		public static IEnumerable<IPublishedContent> GetImages(ICaptionedImagesContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("images"); }
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return GetTitle(this); }
+		}
+
+		/// <summary>Static getter for Title</summary>
+		public static string GetTitle(ICaptionedImagesContent that) { return that.GetPropertyValue<string>("title"); }
+	}
+
+	/// <summary>Text and Image</summary>
+	[PublishedContentModel("textAndImage")]
+	public partial class TextAndImage : PublishedContentModel, ITextAndImageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "textAndImage";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TextAndImage(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TextAndImage, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetImage(this); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetLink(this); }
+		}
+
+		///<summary>
+		/// Summary
+		///</summary>
+		[ImplementPropertyType("summary")]
+		public string Summary
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetSummary(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextAndImageContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Captioned Images - 2 Column Tiles</summary>
+	[PublishedContentModel("captionedImages2ColumnTiles")]
+	public partial class CaptionedImages2ColumnTiles : PublishedContentModel, ICaptionedImagesContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "captionedImages2ColumnTiles";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public CaptionedImages2ColumnTiles(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CaptionedImages2ColumnTiles, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Images
+		///</summary>
+		[ImplementPropertyType("images")]
+		public IEnumerable<IPublishedContent> Images
+		{
+			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetImages(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetTitle(this); }
+		}
+	}
+
+	/// <summary>Captioned Images - Tile Listing</summary>
+	[PublishedContentModel("captionedImagesTileListing")]
+	public partial class CaptionedImagesTileListing : PublishedContentModel, ICaptionedImagesContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "captionedImagesTileListing";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public CaptionedImagesTileListing(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CaptionedImagesTileListing, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public string Content
+		{
+			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetContent(this); }
+		}
+
+		///<summary>
+		/// Images
+		///</summary>
+		[ImplementPropertyType("images")]
+		public IEnumerable<IPublishedContent> Images
+		{
+			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetImages(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetTitle(this); }
+		}
+	}
+
+	// Mixin content Type 1117 with alias "pageContent"
+	/// <summary>{Page Content}</summary>
+	public partial interface IPageContent : IPublishedContent
+	{
+		/// <summary>Content Modules</summary>
+		IEnumerable<IPublishedContent> ContentModules { get; }
+	}
+
+	/// <summary>{Page Content}</summary>
+	[PublishedContentModel("pageContent")]
+	public partial class PageContent : PublishedContentModel, IPageContent
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "pageContent";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public PageContent(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PageContent, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content Modules
+		///</summary>
+		[ImplementPropertyType("contentModules")]
+		public IEnumerable<IPublishedContent> ContentModules
+		{
+			get { return GetContentModules(this); }
+		}
+
+		/// <summary>Static getter for Content Modules</summary>
+		public static IEnumerable<IPublishedContent> GetContentModules(IPageContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("contentModules"); }
 	}
 
 	/// <summary>Folder</summary>
