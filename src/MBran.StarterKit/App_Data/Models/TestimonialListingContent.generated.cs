@@ -20,16 +20,24 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Full Width Testimonial Slider</summary>
-	[PublishedContentModel("fullWidthTestimonialSlider")]
-	public partial class FullWidthTestimonialSlider : PublishedContentModel, IModuleContent, ITestimonialListingContent
+	// Mixin content Type 1181 with alias "testimonialListingContent"
+	/// <summary>{Testimonial Listing Content}</summary>
+	public partial interface ITestimonialListingContent : IPublishedContent
+	{
+		/// <summary>Testimonials</summary>
+		IEnumerable<IPublishedContent> Testimonials { get; }
+	}
+
+	/// <summary>{Testimonial Listing Content}</summary>
+	[PublishedContentModel("testimonialListingContent")]
+	public partial class TestimonialListingContent : PublishedContentModel, ITestimonialListingContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "fullWidthTestimonialSlider";
+		public new const string ModelTypeAlias = "testimonialListingContent";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public FullWidthTestimonialSlider(IPublishedContent content)
+		public TestimonialListingContent(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +48,9 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullWidthTestimonialSlider, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TestimonialListingContent, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Enable?
-		///</summary>
-		[ImplementPropertyType("enable")]
-		public bool Enable
-		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -60,7 +59,10 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("testimonials")]
 		public IEnumerable<IPublishedContent> Testimonials
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialListingContent.GetTestimonials(this); }
+			get { return GetTestimonials(this); }
 		}
+
+		/// <summary>Static getter for Testimonials</summary>
+		public static IEnumerable<IPublishedContent> GetTestimonials(ITestimonialListingContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("testimonials"); }
 	}
 }

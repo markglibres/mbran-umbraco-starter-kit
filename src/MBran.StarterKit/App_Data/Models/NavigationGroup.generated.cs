@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Full Width Testimonial Slider</summary>
-	[PublishedContentModel("fullWidthTestimonialSlider")]
-	public partial class FullWidthTestimonialSlider : PublishedContentModel, IModuleContent, ITestimonialListingContent
+	/// <summary>Navigation Group</summary>
+	[PublishedContentModel("navigationGroup")]
+	public partial class NavigationGroup : PublishedContentModel, IModuleContent, INavigationGroupContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "fullWidthTestimonialSlider";
+		public new const string ModelTypeAlias = "navigationGroup";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public FullWidthTestimonialSlider(IPublishedContent content)
+		public NavigationGroup(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullWidthTestimonialSlider, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationGroup, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -55,12 +55,21 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Testimonials
+		/// Links
 		///</summary>
-		[ImplementPropertyType("testimonials")]
-		public IEnumerable<IPublishedContent> Testimonials
+		[ImplementPropertyType("links")]
+		public IEnumerable<RJP.MultiUrlPicker.Models.Link> Links
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialListingContent.GetTestimonials(this); }
+			get { return Umbraco.Web.PublishedContentModels.NavigationGroupContent.GetLinks(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return Umbraco.Web.PublishedContentModels.NavigationGroupContent.GetTitle(this); }
 		}
 	}
 }

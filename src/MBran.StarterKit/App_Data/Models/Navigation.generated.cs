@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Full Width Testimonial Slider</summary>
-	[PublishedContentModel("fullWidthTestimonialSlider")]
-	public partial class FullWidthTestimonialSlider : PublishedContentModel, IModuleContent, ITestimonialListingContent
+	/// <summary>Navigation</summary>
+	[PublishedContentModel("navigation")]
+	public partial class Navigation : PublishedContentModel, IModuleContent, INavigationContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "fullWidthTestimonialSlider";
+		public new const string ModelTypeAlias = "navigation";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public FullWidthTestimonialSlider(IPublishedContent content)
+		public Navigation(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullWidthTestimonialSlider, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Navigation, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -55,12 +55,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Testimonials
+		/// Links
 		///</summary>
-		[ImplementPropertyType("testimonials")]
-		public IEnumerable<IPublishedContent> Testimonials
+		[ImplementPropertyType("links")]
+		public IEnumerable<IPublishedContent> Links
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialListingContent.GetTestimonials(this); }
+			get { return Umbraco.Web.PublishedContentModels.NavigationContent.GetLinks(this); }
 		}
 	}
 }
