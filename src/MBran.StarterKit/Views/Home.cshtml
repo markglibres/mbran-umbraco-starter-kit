@@ -1,0 +1,14 @@
+﻿@using MBran.ContentModule.Extensions
+@using Our.Umbraco.Ditto
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Home>
+
+<h1>Home baby!</h1>
+
+@foreach (var module in Model.ContentModules)
+{
+    var mod = module.As<ModuleContent>();
+    if (mod != null && mod.Enable)
+    {
+        @Html.Module(module)    
+    }
+}

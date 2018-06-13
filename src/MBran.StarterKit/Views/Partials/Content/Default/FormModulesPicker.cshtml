@@ -1,0 +1,15 @@
+﻿@using MBran.ContentModule.Extensions
+@using Our.Umbraco.Ditto
+@model FormModulesPicker
+    
+@if (Model.ModulesPicker != null)
+{
+    foreach (var module in Model.ModulesPicker)
+    {
+        var mod = module.As<ModuleContent>();
+        if (mod != null && mod.Enable)
+        {
+            @Html.Module(module)    
+        }
+    }   
+}

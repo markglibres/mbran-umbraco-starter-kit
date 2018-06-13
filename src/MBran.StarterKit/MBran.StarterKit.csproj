@@ -103,6 +103,12 @@
     <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
     </Reference>
+    <Reference Include="MBran.ContentModule, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MBran.ContentModule.1.0.2\lib\net452\MBran.ContentModule.dll</HintPath>
+    </Reference>
+    <Reference Include="MBran.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MBran.Core.0.2.2\lib\net452\MBran.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
       <HintPath>..\..\packages\UmbracoCms.Core.7.10.4\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
@@ -154,6 +160,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.Ditto, Version=0.11.6485.9186, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Our.Umbraco.Ditto.0.11.3\lib\net45\Our.Umbraco.Ditto.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -301,6 +310,12 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Partials\Content\Default\FormModulesPicker.cshtml" />
+    <Content Include="Views\Home.cshtml" />
+    <Content Include="Views\Partials\Content\Default\FullWidthSubscribeForm.cshtml" />
+    <Content Include="Views\Partials\Content\Default\ImageBlockRight.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -343,12 +358,86 @@
     <Content Include="uSync\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\BasicHtml.generated.cs" />
+    <Compile Include="App_Data\Models\BasicHtmlContent.generated.cs" />
+    <Compile Include="App_Data\Models\BasicImageHtml.generated.cs" />
+    <Compile Include="App_Data\Models\BasicImageHtmlContent.generated.cs" />
+    <Compile Include="App_Data\Models\BasicImageText.generated.cs" />
+    <Compile Include="App_Data\Models\BasicImageTextContent.generated.cs" />
+    <Compile Include="App_Data\Models\BasicModules.generated.cs" />
+    <Compile Include="App_Data\Models\BasicText.generated.cs" />
+    <Compile Include="App_Data\Models\BasicTextContent.generated.cs" />
+    <Compile Include="App_Data\Models\ButtonTabs.generated.cs" />
+    <Compile Include="App_Data\Models\CaptionedImages2ColumnTiles.generated.cs" />
+    <Compile Include="App_Data\Models\CaptionedImagesContent.generated.cs" />
+    <Compile Include="App_Data\Models\CaptionedImagesTileListing.generated.cs" />
+    <Compile Include="App_Data\Models\Error404.generated.cs" />
+    <Compile Include="App_Data\Models\File.generated.cs" />
+    <Compile Include="App_Data\Models\Folder.generated.cs" />
+    <Compile Include="App_Data\Models\FormHtmlContent.generated.cs" />
+    <Compile Include="App_Data\Models\FormModules.generated.cs" />
+    <Compile Include="App_Data\Models\FormModulesPicker.generated.cs" />
+    <Compile Include="App_Data\Models\FormTextAndImageContent.generated.cs" />
+    <Compile Include="App_Data\Models\FormTextContent.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenBlockVideo.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenComingSoonForm.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenEmbedVideo.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenHeroImage.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenHtmlImage.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenModalVideo.generated.cs" />
+    <Compile Include="App_Data\Models\FullscreenSubscribeForm.generated.cs" />
+    <Compile Include="App_Data\Models\FullWidthSubscribeForm.generated.cs" />
+    <Compile Include="App_Data\Models\FullWidthTestimonialSlider.generated.cs" />
+    <Compile Include="App_Data\Models\GenericPage.generated.cs" />
+    <Compile Include="App_Data\Models\Home.generated.cs" />
+    <Compile Include="App_Data\Models\HtmlAndImageContent.generated.cs" />
+    <Compile Include="App_Data\Models\HtmlContactFormCenter.generated.cs" />
+    <Compile Include="App_Data\Models\HtmlContactFormLeft.generated.cs" />
+    <Compile Include="App_Data\Models\HtmlContactFormRight.generated.cs" />
+    <Compile Include="App_Data\Models\HtmlImageLeft.generated.cs" />
+    <Compile Include="App_Data\Models\HtmlImageRight.generated.cs" />
+    <Compile Include="App_Data\Models\Image.generated.cs" />
+    <Compile Include="App_Data\Models\ImageBlockLeft.generated.cs" />
+    <Compile Include="App_Data\Models\ImageBlockRight.generated.cs" />
+    <Compile Include="App_Data\Models\ImageEdgeLeft.generated.cs" />
+    <Compile Include="App_Data\Models\ImageEdgeRight.generated.cs" />
+    <Compile Include="App_Data\Models\ImageInlineLeft.generated.cs" />
+    <Compile Include="App_Data\Models\ImageInlineRight.generated.cs" />
+    <Compile Include="App_Data\Models\Member.generated.cs" />
+    <Compile Include="App_Data\Models\ModuleContent.generated.cs" />
+    <Compile Include="App_Data\Models\Modules.generated.cs" />
+    <Compile Include="App_Data\Models\Navigation.generated.cs" />
+    <Compile Include="App_Data\Models\NavigationContent.generated.cs" />
+    <Compile Include="App_Data\Models\NavigationGroup.generated.cs" />
+    <Compile Include="App_Data\Models\NavigationGroupContent.generated.cs" />
+    <Compile Include="App_Data\Models\PageBasicContent.generated.cs" />
+    <Compile Include="App_Data\Models\PageModuleContent.generated.cs" />
+    <Compile Include="App_Data\Models\SiteConfig.generated.cs" />
+    <Compile Include="App_Data\Models\TabModules.generated.cs" />
+    <Compile Include="App_Data\Models\TabsContent.generated.cs" />
+    <Compile Include="App_Data\Models\TestimonialItem.generated.cs" />
+    <Compile Include="App_Data\Models\TestimonialItemContent.generated.cs" />
+    <Compile Include="App_Data\Models\TestimonialListingContent.generated.cs" />
+    <Compile Include="App_Data\Models\TestimonialModules.generated.cs" />
+    <Compile Include="App_Data\Models\TextAndExternalVideoContent.generated.cs" />
+    <Compile Include="App_Data\Models\TextAndImage.generated.cs" />
+    <Compile Include="App_Data\Models\TextAndImageContent.generated.cs" />
+    <Compile Include="App_Data\Models\TextAndImageModules.generated.cs" />
+    <Compile Include="App_Data\Models\TextAndVideo.generated.cs" />
+    <Compile Include="App_Data\Models\TextOverImageLeft.generated.cs" />
+    <Compile Include="App_Data\Models\TextOverImageRight.generated.cs" />
+    <Compile Include="App_Data\Models\TextTabs.generated.cs" />
+    <Compile Include="App_Data\Models\VerticalButtonTabs.generated.cs" />
+    <Compile Include="App_Data\Models\VideoInlineLeft.generated.cs" />
+    <Compile Include="App_Data\Models\VideoInlineRight.generated.cs" />
+    <Compile Include="App_Data\Models\VideoModules.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
