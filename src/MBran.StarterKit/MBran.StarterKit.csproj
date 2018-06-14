@@ -299,7 +299,9 @@
     <Content Include="config\uSyncBackOffice.Config" />
     <Content Include="App_Plugins\uSync\package.manifest" />
     <None Include="packages.config" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
