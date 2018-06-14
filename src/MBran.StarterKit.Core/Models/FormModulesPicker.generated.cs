@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Form Modules Picker</summary>
 	[PublishedContentModel("formModulesPicker")]
-	public partial class FormModulesPicker : PublishedContentModel
+	public partial class FormModulesPicker : PublishedContentModel, IModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "formModulesPicker";
@@ -52,6 +52,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IEnumerable<IPublishedContent> ModulesPicker
 		{
 			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("modulesPicker"); }
+		}
+
+		///<summary>
+		/// Enable?
+		///</summary>
+		[ImplementPropertyType("enable")]
+		public bool Enable
+		{
+			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
 		}
 	}
 }
