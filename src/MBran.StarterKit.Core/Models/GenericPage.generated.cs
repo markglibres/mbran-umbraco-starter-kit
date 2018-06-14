@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Generic Page</summary>
 	[PublishedContentModel("genericPage")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("image")]
 		public IPublishedContent Image
 		{
-			get { return Umbraco.Web.PublishedContentModels.PageBasicContent.GetImage(this); }
+			get { return MBran.Modules.PageBasicContent.GetImage(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("summary")]
 		public string Summary
 		{
-			get { return Umbraco.Web.PublishedContentModels.PageBasicContent.GetSummary(this); }
+			get { return MBran.Modules.PageBasicContent.GetSummary(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.PageBasicContent.GetTitle(this); }
+			get { return MBran.Modules.PageBasicContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("contentModules")]
 		public IEnumerable<IPublishedContent> ContentModules
 		{
-			get { return Umbraco.Web.PublishedContentModels.PageModuleContent.GetContentModules(this); }
+			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
 		}
 	}
 }

@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Basic Modules</summary>
 	[PublishedContentModel("basicModules")]

@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Basic Text</summary>
 	[PublishedContentModel("basicText")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public string Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicTextContent.GetContent(this); }
+			get { return MBran.Modules.BasicTextContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("summary")]
 		public string Summary
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicTextContent.GetSummary(this); }
+			get { return MBran.Modules.BasicTextContent.GetSummary(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicTextContent.GetTitle(this); }
+			get { return MBran.Modules.BasicTextContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 	}
 }

@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	// Mixin content Type 1147 with alias "pageBasicContent"
 	/// <summary>{Page Basic Content}</summary>

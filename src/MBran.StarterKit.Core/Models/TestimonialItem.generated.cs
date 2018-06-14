@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Testimonial Item</summary>
 	[PublishedContentModel("testimonialItem")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public string Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetContent(this); }
+			get { return MBran.Modules.TestimonialItemContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("displayName")]
 		public string DisplayName
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetDisplayName(this); }
+			get { return MBran.Modules.TestimonialItemContent.GetDisplayName(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("image")]
 		public IPublishedContent Image
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetImage(this); }
+			get { return MBran.Modules.TestimonialItemContent.GetImage(this); }
 		}
 
 		///<summary>
@@ -87,7 +87,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("jobTitle")]
 		public string JobTitle
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialItemContent.GetJobTitle(this); }
+			get { return MBran.Modules.TestimonialItemContent.GetJobTitle(this); }
 		}
 	}
 }

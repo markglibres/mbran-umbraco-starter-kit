@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Text and Video</summary>
 	[PublishedContentModel("textAndVideo")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public string Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.TextAndExternalVideoContent.GetContent(this); }
+			get { return MBran.Modules.TextAndExternalVideoContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("summary")]
 		public string Summary
 		{
-			get { return Umbraco.Web.PublishedContentModels.TextAndExternalVideoContent.GetSummary(this); }
+			get { return MBran.Modules.TextAndExternalVideoContent.GetSummary(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.TextAndExternalVideoContent.GetTitle(this); }
+			get { return MBran.Modules.TextAndExternalVideoContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -87,7 +87,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("videoUrl")]
 		public string VideoUrl
 		{
-			get { return Umbraco.Web.PublishedContentModels.TextAndExternalVideoContent.GetVideoUrl(this); }
+			get { return MBran.Modules.TextAndExternalVideoContent.GetVideoUrl(this); }
 		}
 	}
 }

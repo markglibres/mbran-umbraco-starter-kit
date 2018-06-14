@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Form Modules Picker</summary>
 	[PublishedContentModel("formModulesPicker")]
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 	}
 }

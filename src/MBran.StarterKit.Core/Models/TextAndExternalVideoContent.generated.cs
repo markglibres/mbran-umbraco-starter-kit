@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	// Mixin content Type 1123 with alias "textAndExternalVideoContent"
 	/// <summary>{Text and External Video Content}</summary>

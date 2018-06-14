@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Basic Image Html</summary>
 	[PublishedContentModel("basicImageHtml")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public IHtmlString Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicImageHtmlContent.GetContent(this); }
+			get { return MBran.Modules.BasicImageHtmlContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("image")]
 		public IPublishedContent Image
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicImageHtmlContent.GetImage(this); }
+			get { return MBran.Modules.BasicImageHtmlContent.GetImage(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("summary")]
 		public string Summary
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicImageHtmlContent.GetSummary(this); }
+			get { return MBran.Modules.BasicImageHtmlContent.GetSummary(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.BasicImageHtmlContent.GetTitle(this); }
+			get { return MBran.Modules.BasicImageHtmlContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -87,7 +87,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 	}
 }

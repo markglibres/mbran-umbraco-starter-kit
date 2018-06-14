@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Full Width Testimonial Slider</summary>
 	[PublishedContentModel("fullWidthTestimonialSlider")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("testimonials")]
 		public IEnumerable<IPublishedContent> Testimonials
 		{
-			get { return Umbraco.Web.PublishedContentModels.TestimonialListingContent.GetTestimonials(this); }
+			get { return MBran.Modules.TestimonialListingContent.GetTestimonials(this); }
 		}
 	}
 }

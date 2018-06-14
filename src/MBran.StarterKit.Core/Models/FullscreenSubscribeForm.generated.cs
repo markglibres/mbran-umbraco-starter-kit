@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Fullscreen Subscribe Form</summary>
 	[PublishedContentModel("fullscreenSubscribeForm")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public string Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.FormTextAndImageContent.GetContent(this); }
+			get { return MBran.Modules.FormTextAndImageContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("image")]
 		public IPublishedContent Image
 		{
-			get { return Umbraco.Web.PublishedContentModels.FormTextAndImageContent.GetImage(this); }
+			get { return MBran.Modules.FormTextAndImageContent.GetImage(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.FormTextAndImageContent.GetTitle(this); }
+			get { return MBran.Modules.FormTextAndImageContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 	}
 }

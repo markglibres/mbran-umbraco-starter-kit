@@ -240,7 +240,6 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
     <Content Include="App_Plugins\RJP.MultiUrlPicker\MultiUrlPicker.html" />
     <Content Include="App_Plugins\RJP.MultiUrlPicker\MultiUrlPicker.js" />
-    <Content Include="Models\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

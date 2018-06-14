@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Navigation Group</summary>
 	[PublishedContentModel("navigationGroup")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("links")]
 		public IEnumerable<RJP.MultiUrlPicker.Models.Link> Links
 		{
-			get { return Umbraco.Web.PublishedContentModels.NavigationGroupContent.GetLinks(this); }
+			get { return MBran.Modules.NavigationGroupContent.GetLinks(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.NavigationGroupContent.GetTitle(this); }
+			get { return MBran.Modules.NavigationGroupContent.GetTitle(this); }
 		}
 	}
 }

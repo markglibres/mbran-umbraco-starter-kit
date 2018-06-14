@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Captioned Images - Tile Listing</summary>
 	[PublishedContentModel("captionedImagesTileListing")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public string Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetContent(this); }
+			get { return MBran.Modules.CaptionedImagesContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("images")]
 		public IEnumerable<IPublishedContent> Images
 		{
-			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetImages(this); }
+			get { return MBran.Modules.CaptionedImagesContent.GetImages(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.CaptionedImagesContent.GetTitle(this); }
+			get { return MBran.Modules.CaptionedImagesContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 	}
 }

@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace Umbraco.Web.PublishedContentModels
+namespace MBran.Modules
 {
 	/// <summary>Html Image Right</summary>
 	[PublishedContentModel("htmlImageRight")]
@@ -51,7 +51,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("content")]
 		public IHtmlString Content
 		{
-			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetContent(this); }
+			get { return MBran.Modules.HtmlAndImageContent.GetContent(this); }
 		}
 
 		///<summary>
@@ -60,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("image")]
 		public IPublishedContent Image
 		{
-			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetImage(this); }
+			get { return MBran.Modules.HtmlAndImageContent.GetImage(this); }
 		}
 
 		///<summary>
@@ -69,7 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("link")]
 		public RJP.MultiUrlPicker.Models.Link Link
 		{
-			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetLink(this); }
+			get { return MBran.Modules.HtmlAndImageContent.GetLink(this); }
 		}
 
 		///<summary>
@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("summary")]
 		public string Summary
 		{
-			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetSummary(this); }
+			get { return MBran.Modules.HtmlAndImageContent.GetSummary(this); }
 		}
 
 		///<summary>
@@ -87,7 +87,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return Umbraco.Web.PublishedContentModels.HtmlAndImageContent.GetTitle(this); }
+			get { return MBran.Modules.HtmlAndImageContent.GetTitle(this); }
 		}
 
 		///<summary>
@@ -96,7 +96,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("enable")]
 		public bool Enable
 		{
-			get { return Umbraco.Web.PublishedContentModels.ModuleContent.GetEnable(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 	}
 }
