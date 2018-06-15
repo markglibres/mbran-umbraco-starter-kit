@@ -22,7 +22,7 @@ namespace MBran.Modules
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IPageBasicContent, IPageModuleContent
+	public partial class Home : PublishedContentModel, IFooterContent, IHeaderContent, IPageBasicContent, IPageModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -73,7 +73,7 @@ namespace MBran.Modules
 		}
 
 		///<summary>
-		/// Content Modules
+		/// Modules
 		///</summary>
 		[ImplementPropertyType("contentModules")]
 		public IEnumerable<IPublishedContent> ContentModules

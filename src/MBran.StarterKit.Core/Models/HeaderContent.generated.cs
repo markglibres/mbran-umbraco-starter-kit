@@ -20,24 +20,22 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	// Mixin content Type 1146 with alias "pageModuleContent"
-	/// <summary>{Page Module Content}</summary>
-	public partial interface IPageModuleContent : IPublishedContent
+	// Mixin content Type 1209 with alias "headerContent"
+	/// <summary>{Header Content}</summary>
+	public partial interface IHeaderContent : IPublishedContent
 	{
-		/// <summary>Modules</summary>
-		IEnumerable<IPublishedContent> ContentModules { get; }
 	}
 
-	/// <summary>{Page Module Content}</summary>
-	[PublishedContentModel("pageModuleContent")]
-	public partial class PageModuleContent : PublishedContentModel, IPageModuleContent
+	/// <summary>{Header Content}</summary>
+	[PublishedContentModel("headerContent")]
+	public partial class HeaderContent : PublishedContentModel, IHeaderContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "pageModuleContent";
+		public new const string ModelTypeAlias = "headerContent";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public PageModuleContent(IPublishedContent content)
+		public HeaderContent(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -48,21 +46,9 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PageModuleContent, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HeaderContent, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
-
-		///<summary>
-		/// Modules
-		///</summary>
-		[ImplementPropertyType("contentModules")]
-		public IEnumerable<IPublishedContent> ContentModules
-		{
-			get { return GetContentModules(this); }
-		}
-
-		/// <summary>Static getter for Modules</summary>
-		public static IEnumerable<IPublishedContent> GetContentModules(IPageModuleContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("contentModules"); }
 	}
 }

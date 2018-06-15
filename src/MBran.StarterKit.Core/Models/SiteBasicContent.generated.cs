@@ -20,16 +20,30 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	/// <summary>Site Config</summary>
-	[PublishedContentModel("siteConfig")]
-	public partial class SiteConfig : PublishedContentModel, ISiteBasicContent
+	// Mixin content Type 1218 with alias "siteBasicContent"
+	/// <summary>{Site Basic Content}</summary>
+	public partial interface ISiteBasicContent : IPublishedContent
+	{
+		/// <summary>Description</summary>
+		string Description { get; }
+
+		/// <summary>Logo</summary>
+		IPublishedContent Logo { get; }
+
+		/// <summary>Title</summary>
+		string Title { get; }
+	}
+
+	/// <summary>{Site Basic Content}</summary>
+	[PublishedContentModel("siteBasicContent")]
+	public partial class SiteBasicContent : PublishedContentModel, ISiteBasicContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "siteConfig";
+		public new const string ModelTypeAlias = "siteBasicContent";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public SiteConfig(IPublishedContent content)
+		public SiteBasicContent(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +54,7 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SiteConfig, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SiteBasicContent, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -51,8 +65,11 @@ namespace MBran.Modules
 		[ImplementPropertyType("description")]
 		public string Description
 		{
-			get { return MBran.Modules.SiteBasicContent.GetDescription(this); }
+			get { return GetDescription(this); }
 		}
+
+		/// <summary>Static getter for Description</summary>
+		public static string GetDescription(ISiteBasicContent that) { return that.GetPropertyValue<string>("description"); }
 
 		///<summary>
 		/// Logo
@@ -60,8 +77,11 @@ namespace MBran.Modules
 		[ImplementPropertyType("logo")]
 		public IPublishedContent Logo
 		{
-			get { return MBran.Modules.SiteBasicContent.GetLogo(this); }
+			get { return GetLogo(this); }
 		}
+
+		/// <summary>Static getter for Logo</summary>
+		public static IPublishedContent GetLogo(ISiteBasicContent that) { return that.GetPropertyValue<IPublishedContent>("logo"); }
 
 		///<summary>
 		/// Title
@@ -69,7 +89,10 @@ namespace MBran.Modules
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return MBran.Modules.SiteBasicContent.GetTitle(this); }
+			get { return GetTitle(this); }
 		}
+
+		/// <summary>Static getter for Title</summary>
+		public static string GetTitle(ISiteBasicContent that) { return that.GetPropertyValue<string>("title"); }
 	}
 }

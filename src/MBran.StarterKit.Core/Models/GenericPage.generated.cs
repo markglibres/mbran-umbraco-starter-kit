@@ -73,7 +73,7 @@ namespace MBran.Modules
 		}
 
 		///<summary>
-		/// Content Modules
+		/// Modules
 		///</summary>
 		[ImplementPropertyType("contentModules")]
 		public IEnumerable<IPublishedContent> ContentModules
