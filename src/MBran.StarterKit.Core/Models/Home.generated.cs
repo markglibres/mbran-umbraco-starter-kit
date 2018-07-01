@@ -22,7 +22,7 @@ namespace MBran.Modules
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IFooterContent, IHeaderContent, IPageModuleContent, IPageNavigationContent
+	public partial class Home : PublishedContentModel, IPageModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -52,24 +52,6 @@ namespace MBran.Modules
 		public IEnumerable<IPublishedContent> ContentModules
 		{
 			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
-		}
-
-		///<summary>
-		/// Footer
-		///</summary>
-		[ImplementPropertyType("navigationFooter")]
-		public IEnumerable<IPublishedContent> NavigationFooter
-		{
-			get { return MBran.Modules.PageNavigationContent.GetNavigationFooter(this); }
-		}
-
-		///<summary>
-		/// Header
-		///</summary>
-		[ImplementPropertyType("navigationHeader")]
-		public IEnumerable<IPublishedContent> NavigationHeader
-		{
-			get { return MBran.Modules.PageNavigationContent.GetNavigationHeader(this); }
 		}
 	}
 }

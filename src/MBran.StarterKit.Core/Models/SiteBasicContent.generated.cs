@@ -24,11 +24,14 @@ namespace MBran.Modules
 	/// <summary>{Site Basic Content}</summary>
 	public partial interface ISiteBasicContent : IPublishedContent
 	{
-		/// <summary>Description</summary>
-		string Description { get; }
+		/// <summary>Email</summary>
+		string Email { get; }
 
 		/// <summary>Logo</summary>
 		IPublishedContent Logo { get; }
+
+		/// <summary>Phone</summary>
+		string Phone { get; }
 
 		/// <summary>Title</summary>
 		string Title { get; }
@@ -60,16 +63,16 @@ namespace MBran.Modules
 		}
 
 		///<summary>
-		/// Description
+		/// Email
 		///</summary>
-		[ImplementPropertyType("description")]
-		public string Description
+		[ImplementPropertyType("email")]
+		public string Email
 		{
-			get { return GetDescription(this); }
+			get { return GetEmail(this); }
 		}
 
-		/// <summary>Static getter for Description</summary>
-		public static string GetDescription(ISiteBasicContent that) { return that.GetPropertyValue<string>("description"); }
+		/// <summary>Static getter for Email</summary>
+		public static string GetEmail(ISiteBasicContent that) { return that.GetPropertyValue<string>("email"); }
 
 		///<summary>
 		/// Logo
@@ -82,6 +85,18 @@ namespace MBran.Modules
 
 		/// <summary>Static getter for Logo</summary>
 		public static IPublishedContent GetLogo(ISiteBasicContent that) { return that.GetPropertyValue<IPublishedContent>("logo"); }
+
+		///<summary>
+		/// Phone
+		///</summary>
+		[ImplementPropertyType("phone")]
+		public string Phone
+		{
+			get { return GetPhone(this); }
+		}
+
+		/// <summary>Static getter for Phone</summary>
+		public static string GetPhone(ISiteBasicContent that) { return that.GetPropertyValue<string>("phone"); }
 
 		///<summary>
 		/// Title

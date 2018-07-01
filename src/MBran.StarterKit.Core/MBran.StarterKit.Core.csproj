@@ -227,6 +227,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\FooterBasicContent.generated.cs" />
+    <Compile Include="Models\FooterCentered.generated.cs" />
+    <Compile Include="Models\FooterLargeText.generated.cs" />
+    <Compile Include="Models\FooterMegaMenu.generated.cs" />
+    <Compile Include="Models\FooterMenu.generated.cs" />
+    <Compile Include="Models\FooterNavigationContent.generated.cs" />
+    <Compile Include="Models\FooterSlim.generated.cs" />
+    <Compile Include="Models\HeaderCenteredLogo.generated.cs" />
+    <Compile Include="Models\HeaderInfoContent.generated.cs" />
+    <Compile Include="Models\HeaderLinkContent.generated.cs" />
+    <Compile Include="Models\HeaderNavigationContent.generated.cs" />
+    <Compile Include="Models\HeaderOffscreen.generated.cs" />
+    <Compile Include="Models\HeaderStandardBar.generated.cs" />
+    <Compile Include="Models\HeaderStandardBarWinfo.generated.cs" />
     <Compile Include="Models\NavigationGroupComponents.generated.cs" />
     <Compile Include="Models\NavigationItem.generated.cs" />
     <Compile Include="Models\NavigationMegaMenu.generated.cs" />
@@ -235,7 +249,8 @@
     <Compile Include="Models\NavigationSingle.generated.cs" />
     <Compile Include="Models\NavigationSingleDropdown.generated.cs" />
     <Compile Include="Models\NavigationTwoLevelDropdown.generated.cs" />
-    <Compile Include="Models\PageNavigationContent.generated.cs" />
+    <Compile Include="Models\SiteBasicModules.generated.cs" />
+    <Compile Include="Models\SiteSocialContent.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,7 +274,6 @@
     <Compile Include="Models\Error404.generated.cs" />
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\Folder.generated.cs" />
-    <Compile Include="Models\FooterContent.generated.cs" />
     <Compile Include="Models\FooterModules.generated.cs" />
     <Compile Include="Models\FormHtmlContent.generated.cs" />
     <Compile Include="Models\FormModules.generated.cs" />
@@ -276,7 +290,6 @@
     <Compile Include="Models\FullWidthSubscribeForm.generated.cs" />
     <Compile Include="Models\FullWidthTestimonialSlider.generated.cs" />
     <Compile Include="Models\GenericPage.generated.cs" />
-    <Compile Include="Models\HeaderContent.generated.cs" />
     <Compile Include="Models\HeaderModules.generated.cs" />
     <Compile Include="Models\Home.generated.cs" />
     <Compile Include="Models\HtmlAndImageContent.generated.cs" />

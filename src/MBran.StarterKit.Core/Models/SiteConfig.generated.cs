@@ -22,7 +22,7 @@ namespace MBran.Modules
 {
 	/// <summary>Site Config</summary>
 	[PublishedContentModel("siteConfig")]
-	public partial class SiteConfig : PublishedContentModel, ISiteBasicContent
+	public partial class SiteConfig : PublishedContentModel, ISiteBasicContent, ISiteBasicModules, ISiteSocialContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "siteConfig";
@@ -46,12 +46,12 @@ namespace MBran.Modules
 		}
 
 		///<summary>
-		/// Description
+		/// Email
 		///</summary>
-		[ImplementPropertyType("description")]
-		public string Description
+		[ImplementPropertyType("email")]
+		public string Email
 		{
-			get { return MBran.Modules.SiteBasicContent.GetDescription(this); }
+			get { return MBran.Modules.SiteBasicContent.GetEmail(this); }
 		}
 
 		///<summary>
@@ -64,12 +64,75 @@ namespace MBran.Modules
 		}
 
 		///<summary>
+		/// Phone
+		///</summary>
+		[ImplementPropertyType("phone")]
+		public string Phone
+		{
+			get { return MBran.Modules.SiteBasicContent.GetPhone(this); }
+		}
+
+		///<summary>
 		/// Title
 		///</summary>
 		[ImplementPropertyType("title")]
 		public string Title
 		{
 			get { return MBran.Modules.SiteBasicContent.GetTitle(this); }
+		}
+
+		///<summary>
+		/// Footer Modules
+		///</summary>
+		[ImplementPropertyType("footerModules")]
+		public IEnumerable<IPublishedContent> FooterModules
+		{
+			get { return MBran.Modules.SiteBasicModules.GetFooterModules(this); }
+		}
+
+		///<summary>
+		/// Header Modules
+		///</summary>
+		[ImplementPropertyType("headerModules")]
+		public IEnumerable<IPublishedContent> HeaderModules
+		{
+			get { return MBran.Modules.SiteBasicModules.GetHeaderModules(this); }
+		}
+
+		///<summary>
+		/// Facebook
+		///</summary>
+		[ImplementPropertyType("facebook")]
+		public string Facebook
+		{
+			get { return MBran.Modules.SiteSocialContent.GetFacebook(this); }
+		}
+
+		///<summary>
+		/// Instagram
+		///</summary>
+		[ImplementPropertyType("instagram")]
+		public string Instagram
+		{
+			get { return MBran.Modules.SiteSocialContent.GetInstagram(this); }
+		}
+
+		///<summary>
+		/// Twitter
+		///</summary>
+		[ImplementPropertyType("twitter")]
+		public string Twitter
+		{
+			get { return MBran.Modules.SiteSocialContent.GetTwitter(this); }
+		}
+
+		///<summary>
+		/// Youtube
+		///</summary>
+		[ImplementPropertyType("youtube")]
+		public string Youtube
+		{
+			get { return MBran.Modules.SiteSocialContent.GetYoutube(this); }
 		}
 	}
 }
