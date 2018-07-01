@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	/// <summary>Error 404</summary>
-	[PublishedContentModel("error404")]
-	public partial class Error404 : PublishedContentModel, IPageModuleContent
+	/// <summary>Nav - Mega Menu</summary>
+	[PublishedContentModel("navigationMegaMenu")]
+	public partial class NavigationMegaMenu : PublishedContentModel, IModuleContent, INavigationContent, INavigationMultiContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "error404";
+		public new const string ModelTypeAlias = "navigationMegaMenu";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Error404(IPublishedContent content)
+		public NavigationMegaMenu(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +40,36 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Error404, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationMegaMenu, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Modules
+		/// Enable?
 		///</summary>
-		[ImplementPropertyType("contentModules")]
-		public IEnumerable<IPublishedContent> ContentModules
+		[ImplementPropertyType("enable")]
+		public bool Enable
 		{
-			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
+			get { return MBran.Modules.ModuleContent.GetEnable(this); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return MBran.Modules.NavigationContent.GetTitle(this); }
+		}
+
+		///<summary>
+		/// Navigration Groups
+		///</summary>
+		[ImplementPropertyType("navigrationGroups")]
+		public IEnumerable<IPublishedContent> NavigrationGroups
+		{
+			get { return MBran.Modules.NavigationMultiContent.GetNavigrationGroups(this); }
 		}
 	}
 }

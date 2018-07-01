@@ -22,7 +22,7 @@ namespace MBran.Modules
 {
 	/// <summary>Generic Page</summary>
 	[PublishedContentModel("genericPage")]
-	public partial class GenericPage : PublishedContentModel, IPageBasicContent, IPageModuleContent
+	public partial class GenericPage : PublishedContentModel, IPageModuleContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "genericPage";
@@ -43,33 +43,6 @@ namespace MBran.Modules
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<GenericPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Image
-		///</summary>
-		[ImplementPropertyType("image")]
-		public IPublishedContent Image
-		{
-			get { return MBran.Modules.PageBasicContent.GetImage(this); }
-		}
-
-		///<summary>
-		/// Summary
-		///</summary>
-		[ImplementPropertyType("summary")]
-		public string Summary
-		{
-			get { return MBran.Modules.PageBasicContent.GetSummary(this); }
-		}
-
-		///<summary>
-		/// Title
-		///</summary>
-		[ImplementPropertyType("title")]
-		public string Title
-		{
-			get { return MBran.Modules.PageBasicContent.GetTitle(this); }
 		}
 
 		///<summary>

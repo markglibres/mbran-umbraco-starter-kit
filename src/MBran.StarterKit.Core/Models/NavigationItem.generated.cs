@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	/// <summary>Error 404</summary>
-	[PublishedContentModel("error404")]
-	public partial class Error404 : PublishedContentModel, IPageModuleContent
+	/// <summary>Navigation Item</summary>
+	[PublishedContentModel("navigationItem")]
+	public partial class NavigationItem : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "error404";
+		public new const string ModelTypeAlias = "navigationItem";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Error404(IPublishedContent content)
+		public NavigationItem(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +40,18 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Error404, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationItem, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Modules
+		/// Link
 		///</summary>
-		[ImplementPropertyType("contentModules")]
-		public IEnumerable<IPublishedContent> ContentModules
+		[ImplementPropertyType("link")]
+		public RJP.MultiUrlPicker.Models.Link Link
 		{
-			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
+			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("link"); }
 		}
 	}
 }

@@ -24,8 +24,8 @@ namespace MBran.Modules
 	/// <summary>{Navigation Content}</summary>
 	public partial interface INavigationContent : IPublishedContent
 	{
-		/// <summary>Links</summary>
-		IEnumerable<IPublishedContent> Links { get; }
+		/// <summary>Title</summary>
+		string Title { get; }
 	}
 
 	/// <summary>{Navigation Content}</summary>
@@ -54,15 +54,15 @@ namespace MBran.Modules
 		}
 
 		///<summary>
-		/// Links
+		/// Title
 		///</summary>
-		[ImplementPropertyType("links")]
-		public IEnumerable<IPublishedContent> Links
+		[ImplementPropertyType("title")]
+		public string Title
 		{
-			get { return GetLinks(this); }
+			get { return GetTitle(this); }
 		}
 
-		/// <summary>Static getter for Links</summary>
-		public static IEnumerable<IPublishedContent> GetLinks(INavigationContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("links"); }
+		/// <summary>Static getter for Title</summary>
+		public static string GetTitle(INavigationContent that) { return that.GetPropertyValue<string>("title"); }
 	}
 }

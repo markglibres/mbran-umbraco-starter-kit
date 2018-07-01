@@ -22,7 +22,7 @@ namespace MBran.Modules
 {
 	/// <summary>Navigation Group</summary>
 	[PublishedContentModel("navigationGroup")]
-	public partial class NavigationGroup : PublishedContentModel, IModuleContent, INavigationGroupContent
+	public partial class NavigationGroup : PublishedContentModel, INavigationGroupContent
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "navigationGroup";
@@ -43,15 +43,6 @@ namespace MBran.Modules
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationGroup, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Enable?
-		///</summary>
-		[ImplementPropertyType("enable")]
-		public bool Enable
-		{
-			get { return MBran.Modules.ModuleContent.GetEnable(this); }
 		}
 
 		///<summary>

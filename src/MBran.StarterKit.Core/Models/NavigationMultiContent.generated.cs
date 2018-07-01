@@ -20,16 +20,24 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	/// <summary>Error 404</summary>
-	[PublishedContentModel("error404")]
-	public partial class Error404 : PublishedContentModel, IPageModuleContent
+	// Mixin content Type 1235 with alias "navigationMultiContent"
+	/// <summary>{Navigation Multi Content}</summary>
+	public partial interface INavigationMultiContent : IPublishedContent
+	{
+		/// <summary>Navigration Groups</summary>
+		IEnumerable<IPublishedContent> NavigrationGroups { get; }
+	}
+
+	/// <summary>{Navigation Multi Content}</summary>
+	[PublishedContentModel("navigationMultiContent")]
+	public partial class NavigationMultiContent : PublishedContentModel, INavigationMultiContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "error404";
+		public new const string ModelTypeAlias = "navigationMultiContent";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Error404(IPublishedContent content)
+		public NavigationMultiContent(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +48,21 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Error404, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationMultiContent, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Modules
+		/// Navigration Groups
 		///</summary>
-		[ImplementPropertyType("contentModules")]
-		public IEnumerable<IPublishedContent> ContentModules
+		[ImplementPropertyType("navigrationGroups")]
+		public IEnumerable<IPublishedContent> NavigrationGroups
 		{
-			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
+			get { return GetNavigrationGroups(this); }
 		}
+
+		/// <summary>Static getter for Navigration Groups</summary>
+		public static IEnumerable<IPublishedContent> GetNavigrationGroups(INavigationMultiContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("navigrationGroups"); }
 	}
 }

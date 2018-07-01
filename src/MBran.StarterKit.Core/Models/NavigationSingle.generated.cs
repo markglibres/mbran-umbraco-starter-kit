@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	/// <summary>Error 404</summary>
-	[PublishedContentModel("error404")]
-	public partial class Error404 : PublishedContentModel, IPageModuleContent
+	/// <summary>Nav - Single Menu</summary>
+	[PublishedContentModel("navigationSingle")]
+	public partial class NavigationSingle : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "error404";
+		public new const string ModelTypeAlias = "navigationSingle";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Error404(IPublishedContent content)
+		public NavigationSingle(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +40,18 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Error404, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationSingle, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Modules
+		/// Navigation Item
 		///</summary>
-		[ImplementPropertyType("contentModules")]
-		public IEnumerable<IPublishedContent> ContentModules
+		[ImplementPropertyType("navigationItem")]
+		public IEnumerable<IPublishedContent> NavigationItem
 		{
-			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("navigationItem"); }
 		}
 	}
 }

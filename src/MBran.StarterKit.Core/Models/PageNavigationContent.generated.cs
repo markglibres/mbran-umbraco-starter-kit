@@ -20,16 +20,27 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace MBran.Modules
 {
-	/// <summary>Home</summary>
-	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IFooterContent, IHeaderContent, IPageModuleContent, IPageNavigationContent
+	// Mixin content Type 1219 with alias "pageNavigationContent"
+	/// <summary>{Page Navigation Content}</summary>
+	public partial interface IPageNavigationContent : IPublishedContent
+	{
+		/// <summary>Footer</summary>
+		IEnumerable<IPublishedContent> NavigationFooter { get; }
+
+		/// <summary>Header</summary>
+		IEnumerable<IPublishedContent> NavigationHeader { get; }
+	}
+
+	/// <summary>{Page Navigation Content}</summary>
+	[PublishedContentModel("pageNavigationContent")]
+	public partial class PageNavigationContent : PublishedContentModel, IPageNavigationContent
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "home";
+		public new const string ModelTypeAlias = "pageNavigationContent";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Home(IPublishedContent content)
+		public PageNavigationContent(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +51,9 @@ namespace MBran.Modules
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Home, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PageNavigationContent, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Modules
-		///</summary>
-		[ImplementPropertyType("contentModules")]
-		public IEnumerable<IPublishedContent> ContentModules
-		{
-			get { return MBran.Modules.PageModuleContent.GetContentModules(this); }
 		}
 
 		///<summary>
@@ -60,8 +62,11 @@ namespace MBran.Modules
 		[ImplementPropertyType("navigationFooter")]
 		public IEnumerable<IPublishedContent> NavigationFooter
 		{
-			get { return MBran.Modules.PageNavigationContent.GetNavigationFooter(this); }
+			get { return GetNavigationFooter(this); }
 		}
+
+		/// <summary>Static getter for Footer</summary>
+		public static IEnumerable<IPublishedContent> GetNavigationFooter(IPageNavigationContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("navigationFooter"); }
 
 		///<summary>
 		/// Header
@@ -69,7 +74,10 @@ namespace MBran.Modules
 		[ImplementPropertyType("navigationHeader")]
 		public IEnumerable<IPublishedContent> NavigationHeader
 		{
-			get { return MBran.Modules.PageNavigationContent.GetNavigationHeader(this); }
+			get { return GetNavigationHeader(this); }
 		}
+
+		/// <summary>Static getter for Header</summary>
+		public static IEnumerable<IPublishedContent> GetNavigationHeader(IPageNavigationContent that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("navigationHeader"); }
 	}
 }
